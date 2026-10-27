@@ -89,3 +89,30 @@ my_numbers = [5, 6, 7, 8]
 my_numbers.reduce { |sum, number| sum + number } # the sum in the pipe |sum| is the accumulator, that stores the value of the first iteration
 #                                                  and adds the other iterations to it.
 puts sum #=> 26
+
+
+
+# Bang map! method
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+friends.map! { |friend| friend.upcase }
+
+# Now when we call our original friends array again, it returns the changed values from the #map! method. 
+# Instead of returning a new array, #map! modified our original array.
+puts friends
+
+
+
+
+
+# Return values of enumerables
+
+friends = ['Sharon1', 'Leo2', 'Leila3', 'Brian4', 'Arun5']
+
+def invited_friends(friends)
+  friends.select { |friend| friend != 'Brian' }
+end
+
+puts friends #=> ['Sharon1', 'Leo'2, 'Leila3', 'Brian4', 'Arun5']
+
+puts invited_friends(friends) #=> ["Sharon1", "Leo2", "Leila3", "Arun4"]
