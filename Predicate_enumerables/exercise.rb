@@ -92,3 +92,46 @@ p(numbers.any? { |number| number > 500 })
 
 p(numbers.any? { |number| number < 20 })
 #=> false
+
+
+# The all? method
+# The all? method is also fairly intuitive. It only returns true if all the elements in your array or hash match the 
+# condition you set within the block; otherwise, it will return false.
+
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+matches = []
+result = false
+
+fruits.each do |fruit|
+  if fruit.length > 3
+    matches.push(fruit)
+  end
+end
+
+result = fruits.length == matches.length
+p result
+#=> true
+
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+matches = []
+result = false
+
+fruits.each do |fruit|
+  if fruit.length > 6
+    matches.push(fruit)
+  end
+end
+
+result = fruits.length == matches.length
+p result
+#=> false
+
+
+# The all? method in action
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+
+p (fruits.all? { |fruit| fruit.length > 3 })
+#=> true
+
+p (fruits.all? { |fruit| fruit.length > 6 })
+#=> false
