@@ -130,10 +130,10 @@ p result
 # The all? method in action
 fruits = ["apple", "banana", "strawberry", "pineapple"]
 
-p (fruits.all? { |fruit| fruit.length > 3 })
+p(fruits.all? { |fruit| fruit.length > 3 })
 #=> true
 
-p (fruits.all? { |fruit| fruit.length > 6 })
+p(fruits.all? { |fruit| fruit.length > 6 })
 #=> false
 
 
