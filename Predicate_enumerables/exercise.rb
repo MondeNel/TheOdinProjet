@@ -37,3 +37,58 @@ p numbers.include?(6) # is 6 included within the array
 
 p numbers.include?(3) # is 3 included within the array
 #=> false
+
+
+# The include? method
+friends = ['Sharon', 'Leo', 'Leila', 'Brian', 'Arun']
+
+invited_list = friends.select { |friend| friend != 'Brian' }
+
+p invited_list.include?('Brian')
+#=> false
+
+
+
+
+
+# The any? method
+# This method checks if any of the things are true or false
+
+numbers = [21, 42, 303, 499, 550, 811]
+result = false
+
+numbers.each do |number|
+  if number > 500
+    result = true
+    break
+  end
+end
+
+p result
+#=> true
+
+numbers = [21, 42, 303, 499, 550, 811]
+result = false
+
+numbers.each do |number|
+  if number < 20
+    result = true
+    break
+  end
+end
+
+p result
+#=> false
+
+
+
+
+# The any? method in action
+
+numbers = [21, 42, 303, 499, 550, 811]
+
+p(numbers.any? { |number| number > 500 })
+#=> true
+
+p(numbers.any? { |number| number < 20 })
+#=> false
