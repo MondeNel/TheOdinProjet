@@ -175,6 +175,7 @@ p result
 
 
 # none? method in action
+# 
 
 fruits = ["apple", "banana", "strawberry", "pineapple"]
 
@@ -184,4 +185,19 @@ p(fruits.none? { |fruit| fruit.length > 10 }) # the param block/variable block f
 
 p(fruits.none? { |fruit| fruit.length > 6 }) # the param block/variable block first iterate through the array
 # fruit.length checks each character of the fruits within the array and matches it with the numbver 6
+#=> false
+
+
+
+# The one? method
+# Ruby has methods to check whether all, any, or none of the elements in an array match a condition. 
+# But what if you need exactly one match - no more, no less? Ruby has you covered with the #one? method, 
+# which returns true if the block evaluates to true for exactly one element.
+
+fruits = ["apple", "banana", "strawberry", "pineapple"]
+
+p(fruits.one? { |fruit| fruit.length > 9 }) # this condition check if there is a fruit with characters that have 9 chars in it, which is "pineapple"
+#=> true
+
+p(fruits.one? { |fruit| fruit.length > 2 }) # there is no fruit in the array that contains 2 chars
 #=> false
