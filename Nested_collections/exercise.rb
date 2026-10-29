@@ -88,14 +88,16 @@ test_scores[0].pop
 puts "\nFinal state (restored to original 4x4 array):"
 p test_scores
 
-
 # ===================================================================== #
 
 # Mutable nested collections
 mutable = Array.new(3, Array.new(2))
 # Array.new(3) This would create a new nested array with 3 arrays within the outer array
 # Array.new(2) that would create two slots within the nested arrays
-# This create a shared reference
+# This create a shared reference:
+# 1. Object Creation ->	Evaluates the inner array once.
+# 2. Memory Blueprint -> 	3 slots pointing to one shared object.
+# 3. Modification ->	Changing one sub-array affects all of them.
 
 =begin
 The outcome result:
@@ -119,3 +121,33 @@ The outcome result:
 
 p mutable
 
+# ===================================================================== #
+
+# Mutable Array with Independent References
+nested_arrays = Array.new(3) { Array.new(2) }
+# 1. Each { Array.new(2) } block creates a new inner array. This means all three inner arrays are independent objects. When you modify one, the others stay the same.
+# 2. # Array.new(3) This would create a new nested array with 3 arrays within the outer array.
+
+=begin
+The outcome result:
+[
+  [nil, nil],
+  [nil, nil],
+  [nil, nil]
+]
+=end
+
+nested_arrays[0][0] = 1000
+# 1. we target the first array of the nested array [0]
+# 2. we assign a value to the first index of that first array [0] = 1000
+
+p nested_arrays
+
+=begin
+The outcome result:
+[
+  [1000, nil],
+  [nil, nil],
+  [nil, nil]
+]
+=end
