@@ -151,3 +151,84 @@ The outcome result:
   [nil, nil]
 ]
 =end
+
+# ===================================================================== #
+
+# iterating over nested arrays
+
+# Go through the outer array, one row at a time.
+# each_with_index gives us both the current row and its position.
+teacher_mailboxes.each_with_index do |row, row_index|
+  # row is one inner array of mailbox names.
+  # row_index is that row's position in teacher_mailboxes, starting at 0.
+
+  puts "Row:#{row_index} = #{row}"
+end
+
+# each_with_index returns the original teacher_mailboxes array
+
+
+# Nested hashes
+vehicles = {
+  alice: {year: 2019, make: "Toyota", model: "Corolla"},
+  blake: {year: 2020, make: "Volkswagen", model: "Beetle"},
+  caleb: {year: 2020, make: "Honda", model: "Accord"}
+}
+
+# Accessing data: Accessing a specific element in a nested hash is very similar to a nested array. 
+# It is done by calling hash[:x][:y], where :x is the key of the hash and :y is the key of the nested hash.
+p vehicles[:alice][:year]
+# :alice is the key of the hash and :year is the key of the nested hash # -> 2019
+
+p vehicles[:blake][:make] # -> Volkswagen
+
+p vehicles[:caleb][:model] # -> Accord
+
+
+# access a key in a nonexistent nested hash by using the #dig method
+
+# vehicles[:zoe][:year] #=> NoMethodError - because there is no 'zoe' within the nested hash
+
+vehicles.dig(:zoe, :year) #=> nil
+
+vehicles[:alice][:color] #=> nil - because there is no color key or value
+
+vehicles.dig(:alice, :color) #=> nil - because there is no color key or value
+
+
+# Adding data
+
+vehicles[:dave] = { year: 2021, make: "Ford", model: "Escape" }
+p vehicles[:dave] # => {:year=>2021, :make=>"Ford", :model=>"Escape"}
+p vehicles        # => includes :dave and the other vehicles
+
+vehicles[:dave][:color] = "red" # this would add towards the nested array an element into that key of "dave" by adding another key with a value # rubocop:disable Layout/LineLength
+
+p vehicles
+# :dave=>{:year=>2021, :make=>"Ford", :model=>"Escape", :color=>"red"}}
+
+
+# Deleting and removing data
+
+vehicles.delete(:blake) #=> {:year=>2020, :make=>"Volkswagen", :model=>"Beetle"}
+p vehicles
+
+
+# you can delete a key as well 
+vehicles[:dave].delete(:color) #=> we deleted the key color in dave 
+p vehicles
+
+# Different helpful methods
+
+# #select
+vehicles.select { |_name, data| data[:year] >= 2020 } # select check which of the vehicles are greater or equal to 2020 year model
+# name - targets the outer hash key (alice, caleb, dave) etc...
+# data - targets the is the value for that outer key, it would look ar {year, make, model} etc...
+# vehicles #=> {:caleb=>{:year=>2020, :make=>"Honda", :model=>"Accord"}, :dave=>{:year=>2021, :make=>"Ford", :model=>"Escape"}}
+
+# shorter version
+p(vehicles.collect { |name, data| name if data[:year] >= 2020 })
+# name = outer hash key, in this case (alice, dave, caleb)
+# data = targets the values of those outer keys (year, model, make)
+# name if data[:year] >= 2020 = it as to peovide the name of the data of that key which is greater or equal to 2020
+# returns => [nil, :caleb, :dave]
