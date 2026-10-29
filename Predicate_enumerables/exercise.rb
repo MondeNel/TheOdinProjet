@@ -146,7 +146,7 @@ p(fruits.all? { |fruit| fruit.length > 6 })
 fruits = ["apple", "banana", "strawberry", "pineapple"]
 result = false
 
-fruits.each do |fruit|
+fruits.each do |fruit| # we use fruit as the variable block or block param to loop through the array of fruits
   if fruit.length > 10 # we check here the length of chaaracters for each word in the array is it more than 10 characters.
     result = false
     break
@@ -201,3 +201,15 @@ p(fruits.one? { |fruit| fruit.length > 9 }) # this condition check if there is a
 
 p(fruits.one? { |fruit| fruit.length > 2 }) # there is no fruit in the array that contains 2 chars
 #=> false
+
+
+# another example
+# simple example but with a single array
+numbers = [21, 42, 303, 499, 550, 811]
+
+numbers.each_with_index do |number, index|
+  # number iterates through the array of numbers within the array
+  # index keeps the count of index of each number within the array
+  # e.g 21(number) = 0(index) etc...
+  puts "#{index}: #{number}"
+end
