@@ -87,3 +87,35 @@ p popped_array
 test_scores[0].pop 
 puts "\nFinal state (restored to original 4x4 array):"
 p test_scores
+
+
+# ===================================================================== #
+
+# Mutable nested collections
+mutable = Array.new(3, Array.new(2))
+# Array.new(3) This would create a new nested array with 3 arrays within the outer array
+# Array.new(2) that would create two slots within the nested arrays
+# This create a shared reference
+
+=begin
+The outcome result:
+[
+  [nil, nil],
+  [nil, nil],
+  [nil, nil]
+]
+=end
+
+mutable[0][0] = 1000 # now we overwrite the first index of each array in the nested array
+
+=begin
+The outcome result:
+[
+  [1000, nil],
+  [1000, nil],
+  [1000, nil]
+]
+=end
+
+p mutable
+
