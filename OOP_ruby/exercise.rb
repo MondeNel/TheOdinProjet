@@ -185,3 +185,49 @@ puts sparky.info      # => Sparky weighs 10 lbs and is 12 inches tall.
 
 sparky.change_info('Spartacus', '24 inches', '45 lbs') # this line calls the change_info method on the sparky object and changes the information of the dog to the new values passed in as arguments
 puts sparky.info # => Spartacus weighs 45 lbs and is 24 inches tall.
+
+
+# =================================================================================================== #
+# Calling methods with self
+
+class GoodDog
+  # Create getter and setter methods for name, height, and weight.
+  attr_accessor :name, :height, :weight
+
+  # initialize runs when a new GoodDog object is created.
+  # Store the supplied values in this object's instance variables.
+  def initialize(n, h, w)
+    @name = n
+    @height = h
+    @weight = w
+  end
+
+  # Return a string with the dog's name and sound.
+  # Ruby implicitly uses self when reading the name getter here.
+  def speak
+    "#{name} says arf!"
+  end
+
+  # Update this dog's information using the setter methods.
+  # self makes it clear these are method calls, not local variable assignments.
+  def change_info(n, h, w)
+    self.name = n
+    self.height = h
+    self.weight = w
+  end
+
+  # Return a string describing this dog's information.
+  def info
+    "#{self.name} weighs #{self.weight} and is #{self.height} tall."
+  end
+end
+
+# Create Sparky with a name, height, and weight.
+sparky = GoodDog.new("Sparky", "12 inches", "10 lbs")
+
+# Update Sparky's information.
+sparky.change_info("Spartacus", "24 inches", "45 lbs")
+
+# Call info and print the result.
+puts sparky.info
+# => Spartacus weighs 45 lbs and is 24 inches tall.
