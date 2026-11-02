@@ -53,3 +53,23 @@ fido = GoodDog.new("Fido")
 
 # Call speak on the fido object and print the result.
 puts fido.speak
+
+# ================================================================================================== #
+
+class GoodDog
+  def initialize(name)
+    @name = name
+  end
+
+  def get_name # this method is used to return the name of the dog, which is stored in the instance variable
+    @name
+  end
+
+  def speak # this method is used to return a string that includes the name of the dog and the sound it makes
+    "#{@name} says arf!"
+  end
+end
+
+sparky = GoodDog.new("Sparky") # this creates a new instance of the GoodDog class and assigns it to the variable sparky
+puts sparky.speak # this calls the speak method and returns "Sparky says arf!"
+puts sparky.get_name # this calls the get_name method and returns the name of the dog, which is "Sparky"
