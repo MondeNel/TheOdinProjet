@@ -1,8 +1,11 @@
 class MyCar
-  attr_accessor :color 
-  attr_reader :year
+  attr_accessor :color # this line creates both a getter and setter method for the @color instance variable
+  attr_reader :year # this line creates a getter method for the @year instance variable
 
-  def initialize(year, color, model)
+  def initialize(year, color, model) # these are instance variables that are initialized when a new instance of the MyCar class is created. 
+    # The initialize method is called automatically when a new object is created and it takes in three parameters: year, color, and model. 
+    # The instance variables @year, @color, and @model are set to the values passed in as arguments. 
+    # The instance variable @speed is also initialized to 0.
     @year = year
     @color = color
     @model = model
@@ -32,7 +35,7 @@ class MyCar
 end
 
 my_car = MyCar.new(2024, "blue", "Toyota Corolla") # we create a new instance of the MyCar class and pass in the year, color, and model as arguments
-puts my_car.color       # blue
-my_car.color = "red"
+puts my_car.color       # blue -> because we are calling the getter method for the @color instance variable and we've set the color to blue when we created the new instance of the MyCar class
+my_car.color = "red"    # we are calling the setter method for the @color instance variable and setting the color to red
 puts my_car.color       # red
 puts my_car.spray_paint("red") # "Your car has been painted red."
