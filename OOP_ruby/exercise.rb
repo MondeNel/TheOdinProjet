@@ -149,3 +149,39 @@ puts sparky.speak
 puts sparky.name            # => "Sparky"
 sparky.name = "Spartacus"
 puts sparky.name            # => "Spartacus"
+
+
+# ================================================================================================== #
+# Accessor Methods in Action
+
+class GoodDog
+  attr_accessor :name, :height, :weight # this line creates both getter and setter methods for the @name, @height, and @weight instance variables
+
+  def initialize(n, h, w) # this method is called when a new GoodDog object is created and it initializes the instance variables @name, @height, and @weight with the values passed in as arguments
+    @name = n
+    @height = h
+    @weight = w
+  end
+
+  def speak # this method returns a string that includes the name of the dog and the sound it makes
+    "#{name} says arf!"
+  end
+
+  def change_info(n, h, w) # this method is used to change the information of the dog by setting the instance variables @name, @height, and @weight to the new values passed in as arguments
+    @name = n
+    @height = h
+    @weight = w
+  end
+
+  def info # this method returns a string that includes the name, weight, and height of the dog
+    "#{name} weighs #{weight} and is #{height} tall." # this line uses string interpolation to include the values of the instance variables @name, @weight, and @height in the returned string
+  end
+end
+
+
+sparky = GoodDog.new('Sparky', '12 inches', '10 lbs')
+# Call the info method on the sparky object and print the result which calls the first initialize method and returns "Sparky weighs 10 lbs and is 12 inches tall."
+puts sparky.info      # => Sparky weighs 10 lbs and is 12 inches tall.
+
+sparky.change_info('Spartacus', '24 inches', '45 lbs') # this line calls the change_info method on the sparky object and changes the information of the dog to the new values passed in as arguments
+puts sparky.info # => Spartacus weighs 45 lbs and is 24 inches tall.
