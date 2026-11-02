@@ -55,6 +55,7 @@ fido = GoodDog.new("Fido")
 puts fido.speak
 
 # ================================================================================================== #
+# getter method.
 
 class GoodDog
   def initialize(name)
