@@ -128,3 +128,24 @@ puts sparky.speak
 puts sparky.name            # => "Sparky"
 sparky.name = "Spartacus"
 puts sparky.name            # => "Spartacus"
+
+# ================================================================================================== #
+# Ruby provides a shortcut for creating getter and setter methods using the attr_accessor method.
+
+class GoodDog
+  attr_accessor :name # this line creates both a getter and setter method for the @name instance variable
+
+  def initialize(name)
+    @name = name
+  end
+
+  def speak
+    "#{@name} says arf!"
+  end
+end
+
+sparky = GoodDog.new("Sparky")
+puts sparky.speak
+puts sparky.name            # => "Sparky"
+sparky.name = "Spartacus"
+puts sparky.name            # => "Spartacus"
