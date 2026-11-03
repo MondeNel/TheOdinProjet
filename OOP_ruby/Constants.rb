@@ -12,5 +12,5 @@ class GoodDog
   end
 end
 
-sparky = GoodDog.new("Sparky", 4)
+sparky = GoodDog.new("Sparky", 4) # we create a new instance of the GoodDog class and pass in the name and the age arguments.
 puts sparky.age # 4 * 7(constant variable) = 28
