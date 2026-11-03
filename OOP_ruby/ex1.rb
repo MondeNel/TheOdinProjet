@@ -1,8 +1,9 @@
 # We create a class called MyCar that has an initialize method that takes in three parameters: year, color, and model. 
-# The initialize method sets the instance variables @year, @color, and @model to the values passed in as arguments. It also sets the instance variable @speed to 0.
+
 class MyCar
-  def initialize(year, color, model) # this method is called when a new MyCar object is created and it initializes the instance variables @year, @color, and @model with the values passed in as arguments
-    @year = year
+  # The initialize method sets the instance variables @year, @color, and @model to the values passed in as arguments. 
+  # It also sets the instance variable @speed to 0.
+  def initialize(year, color, model)
     @color = color
     @model = model
     @speed = 0
