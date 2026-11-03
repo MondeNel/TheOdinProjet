@@ -1,8 +1,10 @@
 class MyCar
-    # We create a class called MyCar that has an initialize method that takes in three parameters: year, color, and model.
+  
+  # we've defined two attributes for the MyCar
   attr_accessor :color # this line creates both a getter and setter method for the @color instance variable
   attr_reader :year # this line creates a getter method for the @year instance variable
 
+  # We create a class called MyCar that has an initialize method that takes in three parameters: year, color, and model.
   def initialize(year, color, model) # this method is called when a new MyCar object is created and it initializes the instance variables @year, @color, and @model with the values passed in as arguments
     @year = year
     @color = color

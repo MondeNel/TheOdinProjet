@@ -1,4 +1,5 @@
 class MyCar
+  # atrributes for the 
   attr_accessor :color # this line creates both a getter and setter method for the @color instance variable
   attr_reader :year # this line creates a getter method for the @year instance variable
 
