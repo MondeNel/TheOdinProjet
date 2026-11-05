@@ -1,4 +1,5 @@
-# Modules 
+# Modules
+# -> Using modules to group common behaviors allows us to build a more powerful, flexible and DRY design.
 
 module Swimmable # we define a global module
   def swim
